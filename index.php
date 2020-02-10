@@ -81,14 +81,11 @@ echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         </tr>
 
         <tr>
-            <td>Street:</td>
+            <td>Adress:</td>
             <td> <input type = "text" name = "website">
                 <span class = "error"><?php echo $websiteErr;?></span>
             </td>
-            <td>Number:</td>
-            <td> <input type = "number" name = "website">
-                <span class = "error"><?php echo $websiteErr;?></span>
-            </td>
+
             <td>Zip-code:</td>
             <td> <input type = "number" name = "website">
                 <span class = "error"><?php echo $websiteErr;?></span>
@@ -105,7 +102,7 @@ echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <td>
                 <input type = "radio" name = "gender" value = "female">Female
                 <input type = "radio" name = "gender" value = "male">Male
-                <input type = "radio" name = "gender" value = "male">Other
+                <input type = "radio" name = "gender" value = "Other">Other
                 <span class = "error">* <?php echo $genderErr;?></span>
             </td>
         </tr>
