@@ -13,7 +13,7 @@
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $website = "";
-$number= $_POST['number_entered'];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])) {
         $nameErr = "Name is required";
@@ -117,19 +117,19 @@ echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 <?php
 echo "<h2>Your given values are as:</h2>";
-echo $name;
+echo"Name:  " .$name;
 echo "<br>";
 
-echo $email;
+echo "Email:  " . $email;
 echo "<br>";
 
-echo $website;
+echo "Adress:  " .$website;
 echo "<br>";
 
-echo $comment;
+echo "Comment:  " . $comment;
 echo "<br>";
 
-echo $gender;
+echo "Gender:  " . $gender;
 ?>
 
 </body>
