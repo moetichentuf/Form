@@ -16,20 +16,34 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 // Validation
-$name = $email = $gender = $comment = $website = "";
+$email = $street =  $streetNumber = $city = $zipcode = "";
 
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$emailErr = $streetErr = $streetNumberErr = $cityErr= $zipcodeErr = "";
+
+
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
-        $nameErr = "Name is required";
+    if (empty($_POST["street"])) {
+        $streetErr = "street is required";
     } else {
-        $name = test_input($_POST["name"]);
+        $street = test_input($_POST["street"]);
         // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-            $nameErr = "Only letters and white space allowed";
+        if (!preg_match("/^[a-zA-Z ]*$/",$street)) {
+            $streetErr = "Only letters and white space allowed";
         }
     }
 
+    if (empty($_POST["streetNumber"])) {
+        $streetNumberErr = "Only Numbers allowed";
+    } else {
+        $street = test_input($_POST["streetNumber"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/",$street)) {
+            $streetNumberErr = "Only Numbers allowed";
+        }
+    }
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
@@ -40,27 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (empty($_POST["website"])) {
-        $website = "";
-    } else {
-        $website = test_input($_POST["website"]);
-        // check if URL address syntax is valid
-        if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-            $websiteErr = "Invalid URL";
-        }
-    }
 
-    if (empty($_POST["comment"])) {
-        $comment = "";
-    } else {
-        $comment = test_input($_POST["comment"]);
-    }
-
-    if (empty($_POST["gender"])) {
-        $genderErr = "Gender is required";
-    } else {
-        $gender = test_input($_POST["gender"]);
-    }
 }
 
 function test_input($data) {
@@ -90,12 +84,11 @@ $totalValue = 0;
 require 'front-view.php';
 // Mail this information to client
 echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
 echo $email;
 echo "<br>";
-echo $website;
+echo $street;
 echo "<br>";
-echo $comment;
+echo $city;
 echo "<br>";
-echo $gender;
+
+

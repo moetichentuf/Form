@@ -39,10 +39,12 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
+                    <span class="error">* <?php echo $streetErr;?></span>
                     <input type="text" name="street" id="street" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
+                    <span class="error">* <?php echo $streetNumberErr;?></span>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control">
                 </div>
             </div>
