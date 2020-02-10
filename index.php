@@ -26,12 +26,12 @@ $emailErr = $streetErr = $streetNumberErr = $cityErr= $zipcodeErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["street"])) {
-        $streetErr = "street is required";
+        $streetErr = "";
     } else {
         $street = test_input($_POST["street"]);
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$street)) {
-            $streetErr = "Only letters and white space allowed";
+            $streetErr = "";
         }
     }
 
@@ -44,13 +44,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $streetNumberErr = "Only Numbers allowed";
         }
     }
+    if (empty($_POST["city"])) {
+        $cityErr = "";
+    } else {
+        $city = test_input($_POST["city"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/",$city)) {
+            $cityErr = "";
+        }
+    }
+    if (empty($_POST["zipcode"])) {
+        $zipcodeErr = "Only Numbers allowed";
+    } else {
+        $zipcode = test_input($_POST["zipcode"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/",$zipcode)) {
+            $zipcodeErr = "Only Numbers allowed";
+        }
+    }
     if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
+        $emailErr = "Invalid Email";
     } else {
         $email = test_input($_POST["email"]);
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
+            $emailErr = "Invalid Email";
         }
     }
 
