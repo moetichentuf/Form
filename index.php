@@ -88,3 +88,14 @@ $products = [
 $totalValue = 0;
 
 require 'front-view.php';
+// Mail this information to client
+echo "<h2>Your Input:</h2>";
+echo $name;
+echo "<br>";
+echo $email;
+echo "<br>";
+echo $website;
+echo "<br>";
+echo $comment;
+echo "<br>";
+echo $gender;
