@@ -1,136 +1,37 @@
-
-
-<html>
-
-<head>
-    <style>
-        .error {color: #FF0000;}
-    </style>
-</head>
-
-<body>
 <?php
-// define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
+//this line makes PHP behave in a more strict way
+declare(strict_types=1);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
-        $nameErr = "Name is required";
-    }else {
-        $name = test_input($_POST["name"]);
-    }
+//we are going to use session variables so we need to enable sessions
+session_start();
 
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
-    }else {
-        $email = test_input($_POST["email"]);
-
-        // check if e-mail address is well-formed
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
-        }
-    }
-
-    if (empty($_POST["website"])) {
-        $website = "";
-    }else {
-        $website = test_input($_POST["website"]);
-    }
-
-    if (empty($_POST["comment"])) {
-        $comment = "";
-    }else {
-        $comment = test_input($_POST["comment"]);
-    }
-
-    if (empty($_POST["gender"])) {
-        $genderErr = "Gender is required";
-    }else {
-        $gender = test_input($_POST["gender"]);
-    }
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
 }
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-?>
+//your products with their price.
+$products = [
+    ['name' => 'Club Ham', 'price' => 3.20],
+    ['name' => 'Club Cheese', 'price' => 3],
+    ['name' => 'Club Cheese & Ham', 'price' => 4],
+    ['name' => 'Club Chicken', 'price' => 4],
+    ['name' => 'Club Salmon', 'price' => 5]
+];
 
-<h2>Absolute classes registration</h2>
+$products = [
+    ['name' => 'Cola', 'price' => 2],
+    ['name' => 'Fanta', 'price' => 2],
+    ['name' => 'Sprite', 'price' => 2],
+    ['name' => 'Ice-tea', 'price' => 3],
+];
 
-<p><span class = "error">* required field.</span></p>
+$totalValue = 0;
 
-<form method = "post" action = "<?php
-echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <table>
-        <tr>
-            <td>Name:</td>
-            <td><input type = "text" name = "name">
-                <span class = "error">* <?php echo $nameErr;?></span>
-            </td>
-        </tr>
-
-        <tr>
-            <td>E-mail: </td>
-            <td><input type = "text" name = "email">
-                <span class = "error">* <?php echo $emailErr;?></span>
-            </td>
-        </tr>
-
-        <tr>
-            <td>Adress:</td>
-            <td> <input type = "text" name = "website">
-                <span class = "error"><?php echo $websiteErr;?></span>
-            </td>
-
-            <td>Zip-code:</td>
-            <td> <input type = "number" name = "website">
-                <span class = "error"><?php echo $websiteErr;?></span>
-            </td>
-        </tr>
-
-        <tr>
-            <td>Classes:</td>
-            <td> <textarea name = "comment" rows = "5" cols = "40"></textarea></td>
-        </tr>
-
-        <tr>
-            <td>Gender:</td>
-            <td>
-                <input type = "radio" name = "gender" value = "female">Female
-                <input type = "radio" name = "gender" value = "male">Male
-                <input type = "radio" name = "gender" value = "Other">Other
-                <span class = "error">* <?php echo $genderErr;?></span>
-            </td>
-        </tr>
-
-        <td>
-            <input type = "submit" name = "submit" value = "Submit">
-        </td>
-
-    </table>
-
-</form>
-
-<?php
-echo "<h2>Your given values are as:</h2>";
-echo"Name:  " .$name;
-echo "<br>";
-
-echo "Email:  " . $email;
-echo "<br>";
-
-echo "Adress:  " .$website;
-echo "<br>";
-
-echo "Comment:  " . $comment;
-echo "<br>";
-
-echo "Gender:  " . $gender;
-?>
-
-</body>
-</html>
+require 'front-view.php';
