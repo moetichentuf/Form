@@ -26,26 +26,26 @@ $emailErr = $streetErr = $streetNumberErr = $cityErr= $zipcodeErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["street"])) {
-        $streetErr = "";
+        $streetErr  ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
         $street = test_input($_POST["street"]);
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$street)) {
-            $streetErr = "";
+            $streetErr ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
         }
     }
 
     if (empty($_POST["streetNumber"])) {
-        $streetNumberErr = "Only Numbers allowed";
+        $streetNumberErr ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
         $street = test_input($_POST["streetNumber"]);
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$street)) {
-            $streetNumberErr = "Only Numbers allowed";
+            $streetNumberErr  ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
         }
     }
     if (empty($_POST["city"])) {
-        $cityErr = "";
+        $cityErr ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
         $city = test_input($_POST["city"]);
         // check if name only contains letters and whitespace
@@ -54,21 +54,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if (empty($_POST["zipcode"])) {
-        $zipcodeErr = "Only Numbers allowed";
+        $zipcodeErr = '<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
         $zipcode = test_input($_POST["zipcode"]);
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$zipcode)) {
-            $zipcodeErr = "Only Numbers allowed";
+            $zipcodeErr ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
         }
     }
     if (empty($_POST["email"])) {
-        $emailErr =   '<div class="alert alert-success position-relative">Invalid Email</div>';
+        $emailErr =   '<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
         $email = test_input($_POST["email"]);
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = '<div class="alert alert-success position-relative">Invalid Email</div>';
+            $emailErr = '<div class="alert alert-danger position-relative">Invalid Email</div>';
         }
     }
 
