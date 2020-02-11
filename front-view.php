@@ -29,7 +29,7 @@
                 <label for="email">E-mail:</label>
                 <span class="error">* <?php echo $emailErr;?></span>
 
-                                                      // Email stays in input
+                                                      
                 <input type="text" id="email" value="<?php echo isset($_POST['email']) ? $_POST['email']= filter_var($email, FILTER_VALIDATE_EMAIL): '' ?>" name="email" class="form-control"/>
 
             </div>
