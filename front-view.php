@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <span class="error">* <?php echo $streetNumberErr;?></span>
+                    <span class="error">* numbers only <?php echo $streetNumberErr;?></span>
                     <input type="number" id="streetnumber" name="streetnumber" class="form-control">
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <span class="error">* <?php echo $zipcodeErr;?></span>
+                    <span class="error">* numbers only<?php echo $zipcodeErr;?></span>
                     <input type="number" id="zipcode" name="zipcode" class="form-control">
                 </div>
             </div>
