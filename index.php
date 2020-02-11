@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 //we are going to use session variables so we need to enable sessions
 session_start();
-
+$_SESSION['email'] = $_POST["email"];
+whatIsHappening();
 function whatIsHappening() {
+
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
     echo '<h2>$_POST</h2>';
