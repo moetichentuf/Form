@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 //we are going to use session variables so we need to enable sessions
 session_start();
-
+$_SESSION['email'] = $_POST["email"];
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
@@ -66,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailErr =   '<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
         $email = test_input($_POST["email"]);
+
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr = '<div class="alert alert-danger position-relative">Invalid Email</div>';
