@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
         $email = test_input($_POST["email"]);
-
+      echo  '<div class="alert alert-danger position-relative">Please fill out this field</div>';
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr = '<div class="alert alert-danger position-relative">Invalid Email</div>';
