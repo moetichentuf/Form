@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 //we are going to use session variables so we need to enable sessions
 session_start();
-$_SESSION['email'] = $_POST["email"];
-whatIsHappening();
+
 function whatIsHappening() {
 
     echo '<h2>$_GET</h2>';
@@ -40,9 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["streetNumber"])) {
         $streetNumberErr ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
     } else {
-        $street = test_input($_POST["streetNumber"]);
+        $streetNumber = test_input($_POST["streetNumber"]);
         // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$street)) {
+        if (!preg_match("/^[a-zA-Z ]*$/",$streetNumber)) {
             $streetNumberErr  ='<div class="alert alert-danger position-relative">Please fill out this field</div>';
         }
     }
@@ -66,12 +65,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (empty($_POST["email"])) {
         $emailErr =   '<div class="alert alert-danger position-relative">Please fill out this field</div>';
+
     } else {
         $email = test_input($_POST["email"]);
 
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr = '<div class="alert alert-danger position-relative">Invalid Email</div>';
+
         }
     }
 
@@ -85,20 +86,30 @@ function test_input($data) {
     return $data;
 }
 //your products with their price.
-$products = [
-    ['name' => 'Club Ham', 'price' => 3.20],
-    ['name' => 'Club Cheese', 'price' => 3],
-    ['name' => 'Club Cheese & Ham', 'price' => 4],
-    ['name' => 'Club Chicken', 'price' => 4],
-    ['name' => 'Club Salmon', 'price' => 5]
-];
+$test =$_GET['food'];
+var_dump($test);
 
-$products = [
-    ['name' => 'Cola', 'price' => 2],
-    ['name' => 'Fanta', 'price' => 2],
-    ['name' => 'Sprite', 'price' => 2],
-    ['name' => 'Ice-tea', 'price' => 3],
-];
+// idsplays the arrays  on 1 or null
+if ($test == 1 || $test == null) {
+    $products = [
+        ['name' => 'Club Ham', 'price' => 3.20],
+        ['name' => 'Club Cheese', 'price' => 3],
+        ['name' => 'Club Cheese & Ham', 'price' => 4],
+        ['name' => 'Club Chicken', 'price' => 4],
+        ['name' => 'Club Salmon', 'price' => 5]
+    ];
+}
+else {
+    $products = [
+        ['name' => 'Cola', 'price' => 2],
+        ['name' => 'Fanta', 'price' => 2],
+        ['name' => 'Sprite', 'price' => 2],
+        ['name' => 'Ice-tea', 'price' => 3],
+    ];
+
+
+}
+
 
 $totalValue = 0;
 
